@@ -63,7 +63,7 @@ public class SessaoTest {
 		LocalDate fim=new LocalDate(2016, 1, 23);
 		LocalTime horario=new LocalTime(17, 0);
 		List<Sessao>sessoes=espetaculo.criaSessoes(inicio, fim, horario, Periodicidade.SEMANAL);
-		Assert.assertEquals(10, sessoes.get(0).getInicio().getDayOfYear());
+		Assert.assertEquals(9, sessoes.get(0).getInicio().getDayOfYear());
 		Assert.assertEquals(16, sessoes.get(1).getInicio().getDayOfYear());
 		Assert.assertEquals(23, sessoes.get(2).getInicio().getDayOfYear());
 	}
