@@ -16,14 +16,12 @@ public class CalculadoraDePrecos {
 		BigDecimal preco=new BigDecimal(0);
 		
 		if(sessaoEhCinema || sessaoEhShow) {
-			//quando estiver acabando os ingressos... 
 			preco=calculaPrecoCinemaOuShow(sessao);		
 		} else if(sessaoEhBallet) {
 			preco=calculaPrecoBallet(sessao);
 		} else if(sessaoEhOruqestra) {
 			preco=calculaPrecoOrquestra(sessao);
 		}  else {
-			//nao aplica aumento para teatro (quem vai é pobretão)
 			preco = sessao.getPreco();
 		} 
 		

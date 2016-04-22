@@ -88,7 +88,7 @@ public class EspetaculosController {
 		// aqui faz a magica!
 		// cria sessoes baseado no periodo de inicio e fim passados pelo usuario
 		List<Sessao> sessoes = espetaculo.criaSessoes(inicio, fim, horario, periodicidade);
-
+		
 		agenda.agende(sessoes);
 
 		result.include("message", sessoes.size() + " sessões criadas com sucesso");

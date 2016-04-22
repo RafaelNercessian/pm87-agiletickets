@@ -2,6 +2,8 @@ package br.com.caelum.agiletickets.models;
 
 import static com.google.common.collect.Lists.newArrayList;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -13,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.joda.time.DateTime.Property;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
@@ -98,9 +101,33 @@ public class Espetaculo {
      */
 	public List<Sessao> criaSessoes(LocalDate inicio, LocalDate fim, LocalTime horario, Periodicidade periodicidade) {
 		// ALUNO: Não apague esse metodo. Esse sim será usado no futuro! ;)
-		return null;
+		int diaFinal=fim.getDayOfYear();
+		int diaInicio=inicio.getDayOfYear();
+		int totalDeSessoes;
+		List<Sessao> sessoes=new ArrayList<Sessao>();
+		
+		if (periodicidade.equals(Periodicidade.SEMANAL)){
+			totalDeSessoes=((diaFinal-diaInicio)/7)+1;
+			for (int i=0;i<totalDeSessoes;i++){
+				Sessao sessao=new Sessao();
+				sessao.setInicio(inicio.toDateTime(horario));
+				sessoes.add(sessao);
+				inicio=inicio.plusWeeks(1);
+			}
+		}
+		else{
+			totalDeSessoes=diaFinal-diaInicio;
+			for (int i=0;i<totalDeSessoes;i++){
+				Sessao sessao=new Sessao();
+				sessao.setInicio(inicio.toDateTime(horario));
+				sessoes.add(sessao);
+				inicio=inicio.plusDays(1);
+			}
+		}
+		return sessoes;
 	}
 	
+
 	public boolean Vagas(int qtd, int min)
    {
        // ALUNO: Não apague esse metodo. Esse sim será usado no futuro! ;)
