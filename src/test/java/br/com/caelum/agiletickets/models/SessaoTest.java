@@ -59,7 +59,7 @@ public class SessaoTest {
 		espetaculo.setTipo(TipoDeEspetaculo.CINEMA);
 		Sessao sessao=new Sessao();
 		sessao.setEspetaculo(espetaculo);
-		LocalDate inicio=new LocalDate(2016, 1, 9);
+		LocalDate inicio=new LocalDate(2016, 1, 15);
 		LocalDate fim=new LocalDate(2016, 1, 23);
 		LocalTime horario=new LocalTime(17, 0);
 		List<Sessao>sessoes=espetaculo.criaSessoes(inicio, fim, horario, Periodicidade.SEMANAL);
